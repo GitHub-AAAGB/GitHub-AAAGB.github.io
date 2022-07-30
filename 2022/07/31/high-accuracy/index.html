@@ -20,30 +20,33 @@
     var CONFIG = {"hostname":"github-aaagb.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分享，知识，生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AAA&#39;s Blog">
-<meta property="og:url" content="https://github-aaagb.github.io/index.html">
+  <meta name="description" content="高精度一般的高精度没什么好说的，为了节约空间，我们使用压位。 提供一种可自定义压位大小的写法： 1const int maxdigit &#x3D; 8;  使用maxdigit代表数组的一位代表maxdigit位 什么是“压位”利用数组的特性让数组的一个位置对应多位。 “压位”的注意事项 字符转换数组  计算  前导”0”    字符转换数组a[] 待转换的数组，长度为alen ca[] 读入的char数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="high-accuracy">
+<meta property="og:url" content="https://github-aaagb.github.io/2022/07/31/high-accuracy/index.html">
 <meta property="og:site_name" content="AAA&#39;s Blog">
-<meta property="og:description" content="分享，知识，生活">
+<meta property="og:description" content="高精度一般的高精度没什么好说的，为了节约空间，我们使用压位。 提供一种可自定义压位大小的写法： 1const int maxdigit &#x3D; 8;  使用maxdigit代表数组的一位代表maxdigit位 什么是“压位”利用数组的特性让数组的一个位置对应多位。 “压位”的注意事项 字符转换数组  计算  前导”0”    字符转换数组a[] 待转换的数组，长度为alen ca[] 读入的char数">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-07-30T20:36:02.000Z">
+<meta property="article:modified_time" content="2022-07-30T21:40:06.294Z">
 <meta property="article:author" content="AAA">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://github-aaagb.github.io/">
+<link rel="canonical" href="https://github-aaagb.github.io/2022/07/31/high-accuracy/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>AAA's Blog</title>
+  <title>high-accuracy | AAA's Blog</title>
   
 
 
@@ -146,80 +149,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/07/31/judgeNoSol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="AAA">
-      <meta itemprop="description" content="分享，知识，生活">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AAA's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/31/judgeNoSol/" class="post-title-link" itemprop="url">judgeNoSol</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-07-31 05:21:57 / Modified: 05:36:12" itemprop="dateCreated datePublished" datetime="2022-07-31T05:21:57+08:00">2022-07-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="判断无解"><a href="#判断无解" class="headerlink" title="判断无解"></a>判断无解</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1518">一道水题</a></p>
-<p>在这道题中大家都在使用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> max = <span class="number">99999999</span>;</span><br></pre></td></tr></table></figure>
-
-<p>一类的暴力方法来判断无解时，我看到了优雅的技巧。</p>
-<hr>
-<p><strong>将所有可变的量的变化保存下来，如果两次所有量的状态都一样，那么一定会出现循环的情况</strong></p>
-<p>这样想法真是惊为天人，相信以后也可能用到。</p>
-<p>有人使用<code>n</code>进制的特点，构造一个值</p>
-<p>$\sum_{i&#x3D;1}^j a_i\times n^i$,$a_i \in[1,n)$</p>
-<p>也有人使用<code>n</code>维数组</p>
-<p><code>bool a[i][j][k][m][n]...[p] = true</code></p>
-<p><code>n</code>维数组能满足不同范围的变化从而节约空间，<code>n</code>进制能满足变化量个数的变化</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
@@ -235,10 +168,9 @@
       <meta itemprop="name" content="AAA's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/31/high-accuracy/" class="post-title-link" itemprop="url">high-accuracy</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          high-accuracy
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -262,7 +194,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h1><p>一般的高精度没什么好说的，为了节约空间，我们使用<code>压位</code>。</p>
+        <h1 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h1><p>一般的高精度没什么好说的，为了节约空间，我们使用<code>压位</code>。</p>
 <p>提供一种可自定义<code>压位</code>大小的写法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> maxdigit = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
 
@@ -299,171 +231,36 @@
 <p><code>setw</code>的参数设置默认的宽度，若长度不够则左对齐，利用<code>setfilll</code>的参数补全空余</p>
 <p>如果在高精度乘法中遇到<code>0</code>需要特殊判定，因为此时不满足<code>reslen = alen + blen</code></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/07/27/whichOne/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="AAA">
-      <meta itemprop="description" content="分享，知识，生活">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AAA's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/27/whichOne/" class="post-title-link" itemprop="url">whichOne</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-07-27 23:40:29" itemprop="dateCreated datePublished" datetime="2022-07-27T23:40:29+08:00">2022-07-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-28 00:04:20" itemprop="dateModified" datetime="2022-07-28T00:04:20+08:00">2022-07-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-n-1-还是-1-n"><a href="#0-n-1-还是-1-n" class="headerlink" title="[0,n-1]还是[1,n]?"></a>[0,n-1]还是[1,n]?</h1><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>（都是废话）</p>
-<p>作为不知名蒟蒻，奇怪<code>bug</code>体质以及超弱编码能力拥有者。几乎一年没有碰过代码的我为了找回手感开始怒刷水题。（结果连水题也是<code>bug</code>一堆）</p>
-<p>在我看到<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1563">这道题</a> 的时候，我顿感水中至水，却出了3次<code>bug</code></p>
-<p>第一次：至关重要的<code>mod</code>条件写错了</p>
-<p>第二次：数组大小看错了</p>
-<p>第三次：始终有两个点<code>WA</code></p>
-<p>前两次还好，第一次连题目样例都过不了；第二次看到<code>RE</code>我就知道大事不好；但是第三次的<code>WA</code>就透露着一点不妙。</p>
-<p>为什么就偏偏两个点不过。</p>
-<h3 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h3><p>类似<code>约瑟夫环</code>，只不过每个人都有自己的朝向，并且给出不同的命令（向左或者向右第$s_i$个）</p>
-<p>简单的取模就可以实现。</p>
-<p>但是题目中解释样例和图片中使用的都是$[1,n]$，自然的，我在编程的时候也使用$[1,n]$</p>
-<h2 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h2><p>在排除其他因素干扰后，一直有两个点过不去。这使我想到可能是核心代码出了问题（这破水题有啥“核心”)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tmpside == p[now].side)</span><br><span class="line">&#123;</span><br><span class="line">    now = (now - tmpnum + n) % n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (tmpside != p[now].side)</span><br><span class="line">&#123;</span><br><span class="line">    now = (now + n) % n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>仔细观察这里，对于 $\forall x\in \mathbb{z^+}$， $x\mod{n}$ 的范围是 $[0,n-1]$ ，而我是使用 $[1,n]$ 来存储。自然会出现问题</p>
-<p>只需要改成 $[0,n-1]$ 即可。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当遇到取模类问题时 $[0,n-1]$ 要好于 $[1,n]$ ，因为更契合 $\mod{n}$ 的值域。</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/27/whichOne/" rel="prev" title="whichOne">
+      <i class="fa fa-chevron-left"></i> whichOne
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/31/judgeNoSol/" rel="next" title="judgeNoSol">
+      judgeNoSol <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/07/14/new/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="AAA">
-      <meta itemprop="description" content="分享，知识，生活">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AAA's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/14/new/" class="post-title-link" itemprop="url">Hello world</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-07-14 06:13:25" itemprop="dateCreated datePublished" datetime="2022-07-14T06:13:25+08:00">2022-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-21 03:42:18" itemprop="dateModified" datetime="2022-07-21T03:42:18+08:00">2022-07-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello world&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>新的起点，新的征程，新的世界！</p>
-<p>$\rm{2022.7.14 \qquad 22:16}$</p>
-<p>$\qquad \qquad \qquad \rm{AAA.}$</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -516,6 +313,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">高精度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E5%8E%8B%E4%BD%8D%E2%80%9D"><span class="nav-number">1.1.</span> <span class="nav-text">什么是“压位”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E5%8E%8B%E4%BD%8D%E2%80%9D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.2.</span> <span class="nav-text">“压位”的注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">字符转换数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97"><span class="nav-number">1.3.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%92%8C%E4%B9%98%E6%B3%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%98%BE%E7%84%B6%E4%B8%8D%E5%90%8C"><span class="nav-number">1.4.</span> <span class="nav-text">加法和乘法的计算显然不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%AF%BC%E2%80%9D0%E2%80%9D"><span class="nav-number">1.5.</span> <span class="nav-text">前导”0”</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
