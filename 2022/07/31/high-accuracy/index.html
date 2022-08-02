@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"github-aaagb.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="高精度一般的高精度没什么好说的，为了节约空间，我们使用压位。 提供一种可自定义压位大小的写法： 1const int maxdigit &#x3D; 8;  使用maxdigit代表数组的一位代表maxdigit位 什么是“压位”利用数组的特性让数组的一个位置对应多位。 “压位”的注意事项 字符转换数组  计算  前导”0”    字符转换数组a[] 待转换的数组，长度为alen ca[] 读入的char数">
+  <meta name="description" content="高精度一般的高精度没什么好说的，为了节约空间，我们使用压位。 提供一种可自定义压位大小的写法： 1const int maxdigit &#x3D; 8; 使用maxdigit代表数组的一位代表maxdigit位 什么是“压位”利用数组的特性让数组的一个位置对应多位。 “压位”的注意事项 字符转换数组  计算  前导”0”    字符转换数组a[] 待转换的数组，长度为alen ca[] 读入的char数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="high-accuracy">
 <meta property="og:url" content="https://github-aaagb.github.io/2022/07/31/high-accuracy/index.html">
 <meta property="og:site_name" content="AAA&#39;s Blog">
-<meta property="og:description" content="高精度一般的高精度没什么好说的，为了节约空间，我们使用压位。 提供一种可自定义压位大小的写法： 1const int maxdigit &#x3D; 8;  使用maxdigit代表数组的一位代表maxdigit位 什么是“压位”利用数组的特性让数组的一个位置对应多位。 “压位”的注意事项 字符转换数组  计算  前导”0”    字符转换数组a[] 待转换的数组，长度为alen ca[] 读入的char数">
+<meta property="og:description" content="高精度一般的高精度没什么好说的，为了节约空间，我们使用压位。 提供一种可自定义压位大小的写法： 1const int maxdigit &#x3D; 8; 使用maxdigit代表数组的一位代表maxdigit位 什么是“压位”利用数组的特性让数组的一个位置对应多位。 “压位”的注意事项 字符转换数组  计算  前导”0”    字符转换数组a[] 待转换的数组，长度为alen ca[] 读入的char数组">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-07-30T20:36:02.000Z">
 <meta property="article:modified_time" content="2022-07-30T21:40:06.294Z">
@@ -197,7 +197,6 @@
         <h1 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h1><p>一般的高精度没什么好说的，为了节约空间，我们使用<code>压位</code>。</p>
 <p>提供一种可自定义<code>压位</code>大小的写法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> maxdigit = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-
 <p>使用<code>maxdigit</code>代表数组的一位代表<code>maxdigit</code>位</p>
 <h2 id="什么是“压位”"><a href="#什么是“压位”" class="headerlink" title="什么是“压位”"></a>什么是“压位”</h2><p>利用数组的特性让数组的一个位置对应多位。</p>
 <h2 id="“压位”的注意事项"><a href="#“压位”的注意事项" class="headerlink" title="“压位”的注意事项"></a>“压位”的注意事项</h2><ul>
@@ -212,24 +211,21 @@
 <h3 id="字符转换数组"><a href="#字符转换数组" class="headerlink" title="字符转换数组"></a>字符转换数组</h3><p><code>a[]</code> 待转换的数组，长度为<code>alen</code></p>
 <p><code>ca[]</code> 读入的<code>char</code>数组,长度为<code>calen</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> alen = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> calen = <span class="built_in">strlen</span>(ca);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; calen; i++)</span><br><span class="line">&#123;</span><br><span class="line">    a[alen] += (ca[calen - i - <span class="number">1</span>] - <span class="string">&#x27;0&#x27;</span>) * <span class="built_in">pow</span>(<span class="number">10</span>,i % maxdigit);</span><br><span class="line">    <span class="keyword">if</span>((i + <span class="number">1</span>) % maxdigit == <span class="number">0</span>) alen ++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(calen % maxdigit != <span class="number">0</span>) alen ++;</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><h2 id="加法和乘法的计算显然不同"><a href="#加法和乘法的计算显然不同" class="headerlink" title="加法和乘法的计算显然不同"></a>加法和乘法的计算显然不同</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```res[]```为结果储存的位置，长度为```reslen```.</span><br><span class="line">---</span><br><span class="line">高精度加法：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```c++</span><br><span class="line">int reslen = alen &gt; blen ? alen : blen;</span><br><span class="line">int maxn = pow(10,maxdigit);</span><br><span class="line">for(int i = 0; i &lt; reslen; i++)</span><br><span class="line">&#123;</span><br><span class="line">    res[i] += a[i] + b[i];</span><br><span class="line">    res[i + 1] += res[i] % maxn;</span><br><span class="line">    res[i] /= maxn;</span><br><span class="line">&#125;</span><br><span class="line">if(res[reslen] != 0) reslen ++;</span><br></pre></td></tr></table></figure>
-
 <p>高精度乘法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> reslen = alen + blen;</span><br><span class="line"><span class="type">int</span> maxn = <span class="built_in">pow</span>(<span class="number">10</span>,maxdigit);</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; alen; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; blen; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        res[i + j] += a[i] * b[j];</span><br><span class="line">        res[i + j + <span class="number">1</span>] += res[i + j] / maxn;</span><br><span class="line">        res[i + j] %= maxn;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res[reslen] != <span class="number">0</span>) reslen ++;</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="前导”0”"><a href="#前导”0”" class="headerlink" title="前导”0”"></a>前导”0”</h2><p>考虑这样一个数字$100000009$，对于<code>maxdigit = 4</code>的情况，这个数字会被分成<code>1,0,9</code></p>
 <p>如果直接输出的话就变成了$109$</p>
 <p>这显然是不正确的，我们要进行前导”0”的输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在```iomanip```中的```setw```和```setfill``可以胜任这个任务</span><br><span class="line"></span><br><span class="line">```c++</span><br><span class="line">#include &lt;iomanip&gt;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; res[reslen - <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = reslen - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setw</span>(maxdigit) &lt;&lt; <span class="built_in">setfill</span>(<span class="string">&#x27;0&#x27;</span>) &lt;&lt; res[i];</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-setw```和```setfill```在流中起作用，而且只能作用一次。">
+```setw```的参数设置默认的宽度，若长度不够则左对齐，利用```setfilll```的参数补全空余
 
-<p><code>setw</code>和<code>setfill</code>在流中起作用，而且只能作用一次。</p>
-<p><code>setw</code>的参数设置默认的宽度，若长度不够则左对齐，利用<code>setfilll</code>的参数补全空余</p>
-<p>如果在高精度乘法中遇到<code>0</code>需要特殊判定，因为此时不满足<code>reslen = alen + blen</code></p>
+如果在高精度乘法中遇到`0`需要特殊判定，因为此时不满足```reslen = alen + blen
+</code></pre>
 
     </div>
 
@@ -327,12 +323,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
