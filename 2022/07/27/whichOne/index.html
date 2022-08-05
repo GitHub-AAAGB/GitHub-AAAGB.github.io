@@ -213,6 +213,7 @@
 <p>但是题目中解释样例和图片中使用的都是$[1,n]$，自然的，我在编程的时候也使用$[1,n]$</p>
 <h2 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h2><p>在排除其他因素干扰后，一直有两个点过不去。这使我想到可能是核心代码出了问题（这破水题有啥“核心”)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tmpside == p[now].side)</span><br><span class="line">&#123;</span><br><span class="line">    now = (now - tmpnum + n) % n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (tmpside != p[now].side)</span><br><span class="line">&#123;</span><br><span class="line">    now = (now + n) % n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>仔细观察这里，对于 $\forall x\in \mathbb{z^+}$， $x\mod{n}$ 的范围是 $[0,n-1]$ ，而我是使用 $[1,n]$ 来存储。自然会出现问题</p>
 <p>只需要改成 $[0,n-1]$ 即可。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当遇到取模类问题时 $[0,n-1]$ 要好于 $[1,n]$ ，因为更契合 $\mod{n}$ 的值域。</p>
@@ -313,7 +314,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

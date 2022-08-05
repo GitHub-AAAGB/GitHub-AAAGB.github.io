@@ -28,7 +28,7 @@
 <meta property="og:description" content="算法导论学习笔记 第一部分因为某些原因，这些笔记内容十分肤浅，避开了其中深奥有趣的内容；并且难免会出现错误以及纰漏，而且缺少对大量习题的过程，以及书中大量内容。更多实际上是对书中内容的摘录。 第二章 算法基础2.1 插入排序循环不变式 循环不变式的性质：  初始化：循环的第一次迭代之前，它为真。 保持：如果循环的某次迭代之前它为真，那么下次迭代之前它仍为真。 终止：在循环终止时，不变式为我们提供一">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-08-01T16:18:13.000Z">
-<meta property="article:modified_time" content="2022-08-02T13:06:22.059Z">
+<meta property="article:modified_time" content="2022-08-02T13:13:08.806Z">
 <meta property="article:author" content="AAA">
 <meta property="article:tag" content="note,algorithm">
 <meta name="twitter:card" content="summary">
@@ -180,7 +180,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-08-02 00:18:13 / Modified: 21:06:22" itemprop="dateCreated datePublished" datetime="2022-08-02T00:18:13+08:00">2022-08-02</time>
+              <time title="Created: 2022-08-02 00:18:13 / Modified: 21:13:08" itemprop="dateCreated datePublished" datetime="2022-08-02T00:18:13+08:00">2022-08-02</time>
             </span>
 
           
@@ -203,6 +203,7 @@
 <li><strong>终止</strong>：在循环终止时，不变式为我们提供一个有用的性质。</li>
 </ul>
 <h4 id="2-1-3"><a href="#2-1-3" class="headerlink" title="2.1-3"></a>2.1-3</h4><figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i = 1 to A.length</span><br><span class="line">	if A[i] = v</span><br><span class="line">		return v = A[i]</span><br><span class="line">return v = NIL</span><br></pre></td></tr></table></figure>
+
 <p>对循环不变式的证明：</p>
 <p>初始化：当<code>i = 1</code>时，如果<code>A[1]</code>的值和<code>v</code>相等，则返回<code>v[1]</code>，这满足循环不变式成立</p>
 <p>保持：每一次循环都在前一次的基础上判断下一个元素是否与<code>a[i]</code>相等。</p>
@@ -210,7 +211,7 @@
 <hr>
 <h3 id="2-2-分析算法"><a href="#2-2-分析算法" class="headerlink" title="2.2 分析算法"></a>2.2 分析算法</h3><p>通常情况，我们研究一个算法的最坏情况。</p>
 <p>对插入排序的每一步写出所需要的时间$c_i$，再写出每一步运行的次数$n_i$</p>
-<p>时间$T(n) = \sum c_i n_i$</p>
+<p>时间$T(n) &#x3D; \sum c_i n_i$</p>
 <p>对于插入排序的最坏情况的时间复杂度为$\Theta(n^2)$</p>
 <h4 id="2-2-3"><a href="#2-2-3" class="headerlink" title="2.2-3"></a>2.2-3</h4><p>平均检查元素：$\frac{n}{2}$ ，最坏情况检查元素：$n$</p>
 <p>平均时间：$\Theta(n)$ ，最坏时间：$\Theta(n)$</p>
@@ -223,79 +224,44 @@
 <p>归并排序一个长度为$n$的序列分割成两个长度为$\frac{n}{2}$的序列，并分别将这两个序列进行归并排序，然后将这两个序列合并成有序序列。</p>
 <p>合并：已知两个有序序列<code>a[1~m]</code> <code>b[1~n]</code>，合成的有序序列是<code>c[1~m+n]</code></p>
 <figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a[m+1] = INF</span><br><span class="line">b[n+1] = INF</span><br><span class="line">a_index = b_index = c_index = 0</span><br><span class="line">for i = 1 to max(m,n)</span><br><span class="line">	if a[i] &gt; b[i]</span><br><span class="line">		c[c_index] = a[a_index]</span><br><span class="line">		a_index = a_index + 1</span><br><span class="line">		c_index = c_index + 1</span><br><span class="line">	else </span><br><span class="line">		c[c_index] = b[b_index]</span><br><span class="line">		b_index = b_index + 1</span><br><span class="line">		c_index = c_index + 1</span><br></pre></td></tr></table></figure>
-<p>将<code>a[m+1]</code>=$\infty$ 和<code>b[n+1]</code>=$\infty$的目的是当<code>a_index = m + 1</code>时或者<code>b_index = b + 1</code>时便于利用大小比较直接取剩下一个序列的元素</p>
-<h4 id="2-3-3"><a href="#2-3-3" class="headerlink" title="2.3-3"></a>2.3-3</h4><p>题目：用数学归纳法证明：当$n$恰好是$2$的幂时，以下递归式的解是$T(n) = n\lg{n}$</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-T(n) = \begin{cases}
-2, \qquad \qquad \qquad n=2 \\
-2T(n/2) + n,\quad n=2^k
-,k>1
-\end{cases}
-\end{equation}</script><p>解答： 当$n = 2$时$T(2)=2=2\lg2$</p>
-<p>当$n=2^k,k &gt; 1$时</p>
-<script type="math/tex; mode=display">
-T(2^k) = 2T(2^{k-1})+2^k=2(2T(2^{k-2})+2^{k-1})+2^k=...=2^\mu T(2^{k-\mu})+\mu2^k</script><p>​    令$\mu =k-1$则有</p>
-<script type="math/tex; mode=display">
-T(2^k) = 2^\mu T(2^{k-\mu})+\mu2^k=2^{k-1}T(2^{k-(k-1)})+(k-1)2^k= k2^k\\</script><p>当$n=2^{k+1},k&gt;1$时</p>
-<p>同理易得 </p>
-<script type="math/tex; mode=display">
-T(2^{k+1}) = (k+1)2^{k+1}</script><p>则$T(n) = n\lg{n}$得证 </p>
+
+<p>将<code>a[m+1]</code>&#x3D;$\infty$ 和<code>b[n+1]</code>&#x3D;$\infty$的目的是当<code>a_index = m + 1</code>时或者<code>b_index = b + 1</code>时便于利用大小比较直接取剩下一个序列的元素</p>
+<h4 id="2-3-3"><a href="#2-3-3" class="headerlink" title="2.3-3"></a>2.3-3</h4><p>题目：用数学归纳法证明：当$n$恰好是$2$的幂时，以下递归式的解是$T(n) &#x3D; n\lg{n}$<br>$$<br>\begin{equation}<br>T(n) &#x3D; \begin{cases}<br>2, \qquad \qquad \qquad n&#x3D;2 \<br>2T(n&#x2F;2) + n,\quad n&#x3D;2^k<br>,k&gt;1<br>\end{cases}<br>\end{equation}<br>$$<br>解答： 当$n &#x3D; 2$时$T(2)&#x3D;2&#x3D;2\lg2$</p>
+<p>当$n&#x3D;2^k,k &gt; 1$时<br>$$<br>T(2^k) &#x3D; 2T(2^{k-1})+2^k&#x3D;2(2T(2^{k-2})+2^{k-1})+2^k&#x3D;…&#x3D;2^\mu T(2^{k-\mu})+\mu2^k<br>$$<br>​	令$\mu &#x3D;k-1$则有<br>$$<br>T(2^k) &#x3D; 2^\mu T(2^{k-\mu})+\mu2^k&#x3D;2^{k-1}T(2^{k-(k-1)})+(k-1)2^k&#x3D; k2^k\<br>$$<br>当$n&#x3D;2^{k+1},k&gt;1$时</p>
+<p>同理易得<br>$$<br>T(2^{k+1}) &#x3D; (k+1)2^{k+1}<br>$$<br>则$T(n) &#x3D; n\lg{n}$得证 </p>
 <p>$Q.E.D.$</p>
-<h2 id="第三章-函数的增长"><a href="#第三章-函数的增长" class="headerlink" title="第三章 函数的增长"></a>第三章 函数的增长</h2><h3 id="3-1-渐进记号"><a href="#3-1-渐进记号" class="headerlink" title="3.1 渐进记号"></a>3.1 渐进记号</h3><p>有五个渐进记号，以下给出定义</p>
-<script type="math/tex; mode=display">
-\Theta(g(n)) = \{f(n)|\exists c_1 >0\exists c_2 >0 \exists n_0>0 (\forall n\ge n_0(0\le c_1 g(n) \le f(n) \le c_2g(n)) \}
-\\\\
-O(g(n)) = \{ f(n)| \exists c>0 \exists n_0 >0(\forall n\ge n_0(0 \le f(n)\le cg(n))) \}
-\\\\
-\Omega(g(n)) = \{f(n)|\exists c>0\exists n_0>0(\forall n\ge n_0(0 \le c g(n) \le f(n)))\}
-\\\\
-o(g(n)) = \{ f(n)| \forall c>0 \exists n_0 >0(\forall n\ge n_0(0 \le f(n)\le cg(n))) \}</script><p>回归定义来看：$\Theta(g(n)),O(g(n)),\Omega(g(n))$都是函数的集合</p>
-<p>我们说的$f(n)= \Theta(g(n))$本质上是$f(n) \in \Theta(g(n))$</p>
+<h2 id="第三章-函数的增长"><a href="#第三章-函数的增长" class="headerlink" title="第三章 函数的增长"></a>第三章 函数的增长</h2><h3 id="3-1-渐进记号"><a href="#3-1-渐进记号" class="headerlink" title="3.1 渐进记号"></a>3.1 渐进记号</h3><p>有五个渐进记号，以下给出定义<br>$$<br>\Theta(g(n)) &#x3D; {f(n)|\exists c_1 &gt;0\exists c_2 &gt;0 \exists n_0&gt;0 (\forall n\ge n_0(0\le c_1 g(n) \le f(n) \le c_2g(n)) }<br>\\<br>O(g(n)) &#x3D; { f(n)| \exists c&gt;0 \exists n_0 &gt;0(\forall n\ge n_0(0 \le f(n)\le cg(n))) }<br>\\<br>\Omega(g(n)) &#x3D; {f(n)|\exists c&gt;0\exists n_0&gt;0(\forall n\ge n_0(0 \le c g(n) \le f(n)))}<br>\\<br>o(g(n)) &#x3D; { f(n)| \forall c&gt;0 \exists n_0 &gt;0(\forall n\ge n_0(0 \le f(n)\le cg(n))) }<br>$$<br>回归定义来看：$\Theta(g(n)),O(g(n)),\Omega(g(n))$都是函数的集合</p>
+<p>我们说的$f(n)&#x3D; \Theta(g(n))$本质上是$f(n) \in \Theta(g(n))$</p>
 <p>简单来说：</p>
 <ul>
-<li><p>$\Theta$记号是函数的最高次项并”忽略”其系数 (实际上根据定义，不忽略也可以)</p>
-<script type="math/tex; mode=display">
-f(n) = 114n^4+514n^3+1919n^2+1810n \\\\
-f(n) = \Theta(n^4) \ne \Theta(n^5) \ne \Theta(n^3)</script></li>
-<li><p>$O$记号是函数的上界</p>
-<script type="math/tex; mode=display">
-f(n) = 114n^4+514n^3+1919n^2+1810n \\\\
-f(n) = \Theta(n^4) = \Theta(n^5) \ne \Theta(n^3)1</script></li>
-<li><p>$\Omega$记号是函数的下界</p>
-<script type="math/tex; mode=display">
-f(n) = 114n^4+514n^3+1919n^2+1810n \\\\
-  f(n) = \Theta(n^4) = \Theta(n^3) \ne \Theta(n^5)</script></li>
-<li><p>$o$ 记号与 $O$ 类似，在定义中 $O$  是$\exists c$，而$o$是$\forall c$</p>
-<script type="math/tex; mode=display">
-2n = o(n^2),2n^2\ne o(n^2)</script><p>对于$2n^2 \ne o(n^2)$：</p>
+<li><p>$\Theta$记号是函数的最高次项并”忽略”其系数 (实际上根据定义，不忽略也可以)<br>$$<br>f(n) &#x3D; 114n^4+514n^3+1919n^2+1810n \\<br>f(n) &#x3D; \Theta(n^4) \ne \Theta(n^5) \ne \Theta(n^3)<br>$$</p>
+</li>
+<li><p>$O$记号是函数的上界<br>$$<br>f(n) &#x3D; 114n^4+514n^3+1919n^2+1810n \\<br>f(n) &#x3D; \Theta(n^4) &#x3D; \Theta(n^5) \ne \Theta(n^3)1<br>$$</p>
+</li>
+<li><p>$\Omega$记号是函数的下界<br>$$<br>f(n) &#x3D; 114n^4+514n^3+1919n^2+1810n \\<br>  f(n) &#x3D; \Theta(n^4) &#x3D; \Theta(n^3) \ne \Theta(n^5)<br>$$</p>
+</li>
+<li><p>$o$ 记号与 $O$ 类似，在定义中 $O$  是$\exists c$，而$o$是$\forall c$<br>$$<br>2n &#x3D; o(n^2),2n^2\ne o(n^2)<br>$$<br>对于$2n^2 \ne o(n^2)$：</p>
 <p>对于$\forall n_0$不满足$\forall c$使得$2n^2 \le cn^2$</p>
 </li>
 <li><p>$\omega$记号与$\Omega$类似，在定义中$\Omega$是$\exists c$，而$\omega$是$\forall c$</p>
 </li>
 </ul>
-<script type="math/tex; mode=display">
-n^2/2=\omega(n^2),2n^2 \ne \omega (n^2)</script><p>渐进记号的性质（类比实数）：</p>
+<p>$$<br>n^2&#x2F;2&#x3D;\omega(n^2),2n^2 \ne \omega (n^2)<br>$$</p>
+<p>渐进记号的性质（类比实数）：</p>
 <ul>
-<li>传递性：<script type="math/tex; mode=display">
-f(n) = \Theta(g(n)) \wedge g(n) = \Theta(h(n)) )\rightarrow \\\\ f(n)=\Theta(h(n)) \wedge g(n) = \Theta(h(n)) )\rightarrow 
-\\\\ \f(n)=\Theta(h(n))</script>这个性质$\Theta,O,\Omega,o,\omega$都有</li>
-<li><p>自反性：</p>
-<script type="math/tex; mode=display">
-f(n) = \Theta(f(n))</script><p>这个性质$\Theta,O,\Omega$具有</p>
+<li><p>传递性：<br>$$<br>f(n) &#x3D; \Theta(g(n)) \wedge g(n) &#x3D; \Theta(h(n)) )\rightarrow \\ f(n)&#x3D;\Theta(h(n)) \wedge g(n) &#x3D; \Theta(h(n)) )\rightarrow<br> \\ \f(n)&#x3D;\Theta(h(n))<br>$$<br>这个性质$\Theta,O,\Omega,o,\omega$都有</p>
 </li>
-<li><p>对称性：</p>
-<script type="math/tex; mode=display">
-f(n)=\Theta(g(n)) \iff g(n) = \Theta(f(n))</script></li>
+<li><p>自反性：<br>$$<br>f(n) &#x3D; \Theta(f(n))<br>$$</p>
+<p>这个性质$\Theta,O,\Omega$具有</p>
+</li>
+<li><p>对称性：<br>$$<br>f(n)&#x3D;\Theta(g(n)) \iff g(n) &#x3D; \Theta(f(n))<br>$$</p>
+</li>
 <li></li>
-<li><p>转置对称性：</p>
-<script type="math/tex; mode=display">
-f(n) = O(g(n)) \iff g(n) =\Omega(f(n)) \\
-f(n) = o(g(n)) \iff g(n) =\omega(f(n))</script><p>这很好理解，$f(n)$是$g(n)$的上界，那$g(n)$就是$f(n)$的下界</p>
+<li><p>转置对称性：<br>$$<br>f(n) &#x3D; O(g(n)) \iff g(n) &#x3D;\Omega(f(n)) \<br>f(n) &#x3D; o(g(n)) \iff g(n) &#x3D;\omega(f(n))<br>$$<br>这很好理解，$f(n)$是$g(n)$的上界，那$g(n)$就是$f(n)$的下界</p>
 </li>
 </ul>
-<h4 id="3-1-1"><a href="#3-1-1" class="headerlink" title="3.1-1"></a>3.1-1</h4><script type="math/tex; mode=display">
-    \Theta(f(n)+g(n)) = \{h(n)|\exists c_1,c_2,n_0(\forall n\ge n_0(0\le c_1h(n) \le f(n)+g(n) \le c_2 h(n)))\}</script><h3 id="3-2-标准记号和常用函数"><a href="#3-2-标准记号和常用函数" class="headerlink" title="3.2 标准记号和常用函数"></a>3.2 标准记号和常用函数</h3><ul>
+<h4 id="3-1-1"><a href="#3-1-1" class="headerlink" title="3.1-1"></a>3.1-1</h4><p>$$<br>    \Theta(f(n)+g(n)) &#x3D; {h(n)|\exists c_1,c_2,n_0(\forall n\ge n_0(0\le c_1h(n) \le f(n)+g(n) \le c_2 h(n)))}<br>$$</p>
+<h3 id="3-2-标准记号和常用函数"><a href="#3-2-标准记号和常用函数" class="headerlink" title="3.2 标准记号和常用函数"></a>3.2 标准记号和常用函数</h3><ul>
 <li>单调性</li>
 <li>高斯函数</li>
 <li>模运算</li>
@@ -310,14 +276,18 @@ f(n) = o(g(n)) \iff g(n) =\omega(f(n))</script><p>这很好理解，$f(n)$是$g(
 <p>本章数学内容较多，且部分涉及高等数学内容，具体的内容和习题稍后补全</p>
 <h2 id="第四章-分治策略"><a href="#第四章-分治策略" class="headerlink" title="第四章 分治策略"></a>第四章 分治策略</h2><p>分治策略在每一层递归中有三个步骤</p>
 <ul>
-<li>分解</li>
-<li>解决</li>
-<li>合并<br>当子问题仍然很大，需要进一步递归时，我们称进入了<strong>递归情况</strong><br>当子问题变得足够小，可以直接求解时，我们称进入了<strong>基本情况</strong>，递归已经“触地”<br>求解递归式的$O$和$\Theta$渐进界</li>
-<li>代入法：猜测一个界，用数学归纳法证明</li>
-<li>递归树法：将递归式转换成一颗树</li>
-<li><p>主方法：可求解形如以下式子的递归式</p>
-<script type="math/tex; mode=display">
-T(n) = a(T(n/b))+f(n),a \ge 1,b > 1</script></li>
+<li><p>分解</p>
+</li>
+<li><p>解决</p>
+</li>
+<li><p>合并<br>当子问题仍然很大，需要进一步递归时，我们称进入了<strong>递归情况</strong><br>当子问题变得足够小，可以直接求解时，我们称进入了<strong>基本情况</strong>，递归已经“触地”<br>求解递归式的$O$和$\Theta$渐进界</p>
+</li>
+<li><p>代入法：猜测一个界，用数学归纳法证明</p>
+</li>
+<li><p>递归树法：将递归式转换成一颗树</p>
+</li>
+<li><p>主方法：可求解形如以下式子的递归式<br>$$<br>T(n) &#x3D; a(T(n&#x2F;b))+f(n),a \ge 1,b &gt; 1<br>$$</p>
+</li>
 <li></li>
 </ul>
 <h3 id="4-1-最大子数组问题"><a href="#4-1-最大子数组问题" class="headerlink" title="4.1 最大子数组问题"></a>4.1 最大子数组问题</h3><p>问题简述：你知道一公司股票价值$w$关于日期$t$对应，对于每一个$t$，都有唯一的确定的$w$与之对应，现在给出一定范围的$t,w$，在$t_0$买进，$t_1$卖出的利益最大，求$w_{max}$</p>
@@ -335,22 +305,25 @@ T(n) = a(T(n/b))+f(n),a \ge 1,b > 1</script></li>
 <p>对于情况1，和情况2,我们可以再次使用递归求解</p>
 <p>对于情况3，我们可在线性时间内找到答案</p>
 <p>在$[low,mid]$的范围里枚举$i$，在$[mid+1,high]$的范围里枚举$j$</p>
-<p>$[i,mid]$的最大值$+$ $[mid+1,j]$的最大值$=$$[i,j]$的最大值</p>
+<p>$[i,mid]$的最大值$+$ $[mid+1,j]$的最大值$&#x3D;$$[i,j]$的最大值</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> low,<span class="type">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low == high) <span class="keyword">return</span> A[low];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span> leftsum = <span class="built_in">find</span>(low,mid);</span><br><span class="line">        <span class="type">int</span> rightsum = <span class="built_in">find</span>(mid,high);</span><br><span class="line">        <span class="type">int</span> imax = -INF,iindex = mid,jmax = -INF,jindex = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = mid;i &gt;= low;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += a[i];</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; imax)</span><br><span class="line">            &#123;</span><br><span class="line">             	imax = sum;</span><br><span class="line">                iindex = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> 		<span class="keyword">for</span>(<span class="type">int</span> j = mid+<span class="number">1</span>;j &lt;= high;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += a[j];</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; jmax)</span><br><span class="line">            &#123;</span><br><span class="line">                jmax = sum;</span><br><span class="line">                jindex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> midsum = imax + jmax;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max3</span>(midsum,rightsum,leftsum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-5-用主方法求解递归式"><a href="#4-5-用主方法求解递归式" class="headerlink" title="4.5 用主方法求解递归式"></a>4.5 用主方法求解递归式</h3><script type="math/tex; mode=display">
-T(n) = aT(n/b) +f(n)</script><p>其中$a \ge 0,b &gt; 1$是常数，$f(n)$是渐进正函数，事实上给$n/b$加上高斯函数也不会影响递归式的渐进性质</p>
-<script type="math/tex; mode=display">
-    T(n) = aT(n/b)+f(n) = \Theta(g(n)) \\\\
-    T(n) = aT(\lfloor n/b \rfloor)+f(n) = \Theta(g(n)) \\\\
-    T(n) = aT(\lceil n/b \rceil) + f(n) = \Theta(g(n))</script><p><strong>主定理</strong></p>
-<script type="math/tex; mode=display">
-T(n) = aT(n/b) +f(n),a \ge 0,b>1</script><p>$a,b$是常数，$f(n)$是一个函数，$T(n)$是定义在非负整数上的一个递归式</p>
-<script type="math/tex; mode=display">
-    1. \exists \varepsilon >0 \wedge f(n) = O(n^{\log_b{a-\varepsilon}}) \rightarrow T(n)=\Theta(n^{\log_b{a}})\\\\
-    2.f(n)=\Theta(n^{\log_b{a}}) \rightarrow T(n) = \Theta(n^{\log_b{a}})\\\\
-    3. \exists \varepsilon >0 \wedge f(n) = O(n^{\log_b{a+\varepsilon}}) \wedge \\\\ \exists c < 1 \exists n_0 (\forall n > n_0(a(f(n/b) \le cf(n)))) \rightarrow T(n)=\Theta(f(n))\\\\</script><p>我们将$n^{\log_b{a}}$与$f(n)$进行比较，因为我们有</p>
-<script type="math/tex; mode=display">
-    max(f(n),g(n)) = \Theta(f(n)+g(n))</script><p>所以两个函数较大者是决定了递归的解，如果两个函数相等，则乘上一个对数因子</p>
+
+<h3 id="4-5-用主方法求解递归式"><a href="#4-5-用主方法求解递归式" class="headerlink" title="4.5 用主方法求解递归式"></a>4.5 用主方法求解递归式</h3><p>$$<br>T(n) &#x3D; aT(n&#x2F;b) +f(n)<br>$$</p>
+<p>其中$a \ge 0,b &gt; 1$是常数，$f(n)$是渐进正函数，事实上给$n&#x2F;b$加上高斯函数也不会影响递归式的渐进性质</p>
+<p>$$<br>    T(n) &#x3D; aT(n&#x2F;b)+f(n) &#x3D; \Theta(g(n)) \\<br>    T(n) &#x3D; aT(\lfloor n&#x2F;b \rfloor)+f(n) &#x3D; \Theta(g(n)) \\<br>    T(n) &#x3D; aT(\lceil n&#x2F;b \rceil) + f(n) &#x3D; \Theta(g(n))<br>$$</p>
+<p><strong>主定理</strong></p>
+<p>$$<br>T(n) &#x3D; aT(n&#x2F;b) +f(n),a \ge 0,b&gt;1<br>$$</p>
+<p>$a,b$是常数，$f(n)$是一个函数，$T(n)$是定义在非负整数上的一个递归式</p>
+<p>$$</p>
+<ol>
+<li>\exists \varepsilon &gt;0 \wedge f(n) &#x3D; O(n^{\log_b{a-\varepsilon}}) \rightarrow T(n)&#x3D;\Theta(n^{\log_b{a}})\\<br> 2.f(n)&#x3D;\Theta(n^{\log_b{a}}) \rightarrow T(n) &#x3D; \Theta(n^{\log_b{a}})\\<ol start="3">
+<li>\exists \varepsilon &gt;0 \wedge f(n) &#x3D; O(n^{\log_b{a+\varepsilon}}) \wedge \\ \exists c &lt; 1 \exists n_0 (\forall n &gt; n_0(a(f(n&#x2F;b) \le cf(n)))) \rightarrow T(n)&#x3D;\Theta(f(n))\\<br>$$</li>
+</ol>
+</li>
+</ol>
+<p>我们将$n^{\log_b{a}}$与$f(n)$进行比较，因为我们有</p>
+<p>$$<br>    max(f(n),g(n)) &#x3D; \Theta(f(n)+g(n))<br>$$</p>
+<p>所以两个函数较大者是决定了递归的解，如果两个函数相等，则乘上一个对数因子</p>
 <p>十分建议看看<code>2.3-3</code></p>
 <h2 id="第五章-概率分析和随机算法"><a href="#第五章-概率分析和随机算法" class="headerlink" title="第五章 概率分析和随机算法"></a>第五章 概率分析和随机算法</h2><p>等我补完概率论相关知识在来看</p>
 
@@ -374,7 +347,10 @@ T(n) = aT(n/b) +f(n),a \ge 0,b>1</script><p>$a,b$是常数，$f(n)$是一个函�
     <a href="/2022/07/31/judgeNoSol/" rel="prev" title="judgeNoSol">
       <i class="fa fa-chevron-left"></i> judgeNoSol
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/02/Introduction-to-Algorithms-notes-2/" rel="next" title="Introduction-to-Algorithms-notes-2">
+      Introduction-to-Algorithms-notes-2 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -447,7 +423,7 @@ T(n) = aT(n/b) +f(n),a \ge 0,b>1</script><p>$a,b$是常数，$f(n)$是一个函�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
