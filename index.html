@@ -245,7 +245,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-06 03:59:24" itemprop="dateModified" datetime="2022-08-06T03:59:24+08:00">2022-08-06</time>
+                <time title="Modified: 2022-08-09 03:39:47" itemprop="dateModified" datetime="2022-08-09T03:39:47+08:00">2022-08-09</time>
               </span>
 
           
@@ -259,8 +259,210 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="算法导论学习笔记-第三部分"><a href="#算法导论学习笔记-第三部分" class="headerlink" title="算法导论学习笔记 第三部分"></a>算法导论学习笔记 第三部分</h1><p>正如集合在数学中的作用那样,集合也是计算机科学中的基础. 由算法操作的集合可以在这个过程中起到增大,缩小或者发生其他变化的作用.我们把这样的集合称为动态集合 4  </p>
-<h2 id="第十章-基本数据结构"><a href="#第十章-基本数据结构" class="headerlink" title="第十章 基本数据结构"></a>第十章 基本数据结构</h2><h3 id="10"><a href="#10" class="headerlink" title="10"></a>10</h3>
+          <h1 id="算法导论学习笔记-第三部分"><a href="#算法导论学习笔记-第三部分" class="headerlink" title="算法导论学习笔记 第三部分"></a>算法导论学习笔记 第三部分</h1><p>正如集合在数学中的作用那样,集合也是计算机科学中的基础. 由算法操作的集合可以在这个过程中起到增大,缩小或者发生其他变化的作用.我们把这样的集合称为动态集合.</p>
+<p><strong>动态集合的元素</strong>:  </p>
+<p>关键字:对象的一个属性,和集合的操作有关</p>
+<p>卫星数据:和其他对象属性一同移动,集合的实现不使用他们</p>
+<p><strong>动态集合的操作</strong>:</p>
+<p>查询操作:简单返回有关集合信息</p>
+<p>修改操作:改变集合</p>
+<p>一般会有这样几个操作:</p>
+<p><code>search(S,k)</code>:在集合<code>S</code>中查找关键字为<code>k</code>的元素,返回指向该元素的指针,若没有返回<code>NIL</code></p>
+<p><code>insert(S,x)</code>:在集合<code>S</code>中将<code>x</code>指向的元素加入</p>
+<p><code>delete(S,x)</code>:在集合<code>S</code>中删除<code>x</code>指向的元素</p>
+<p><code>maximum(S),minimum(S)</code>:在<code>S</code>中返回关键字最大或最小的元素</p>
+<p><code>successor(S,x), predecessor(S,x)</code>返回<code>S</code>中比<code>x</code>大或小的下一个元素的指针,若没有返回<code>NIL</code></p>
+<h2 id="第十章-基本数据结构"><a href="#第十章-基本数据结构" class="headerlink" title="第十章 基本数据结构"></a>第十章 基本数据结构</h2><h3 id="10-1-栈和队列"><a href="#10-1-栈和队列" class="headerlink" title="10.1 栈和队列"></a>10.1 栈和队列</h3><p>栈实现的是一种<strong>后进先出</strong><code>(last-in, first-out, LIFO)</code>的策略</p>
+<p>队列实现的是一种<strong>先进先出</strong><code>(first-in, first-out, FIFO)</code>的策略</p>
+<p>本节介绍以数组的方式实现这两种数据结构</p>
+<p><strong>栈</strong></p>
+<p>栈中的<code>insert</code>称为<code>push</code></p>
+<p>栈中的<code>delete</code>称为<code>pop</code></p>
+<p><code>stack_empty()</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">stack_empty</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> S.top == <span class="number">0</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>push(int x)</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S.top + <span class="number">1</span> == n)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;overflow&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    S[S.top++] = x;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>pop()</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">stack_empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;underflow&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> S[S.top --];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>队列</strong></p>
+<p>队列中的<code>insert</code>称为<code>enqueue</code></p>
+<p>队列中的<code>delete</code>称为<code>dequeue</code></p>
+<p><code>euqueue</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">enqueue</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Q[Q.tail] = x;</span><br><span class="line">    <span class="keyword">if</span>(Q.tail == Q.length) Q.tail = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> Q.tail ++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>dequeue</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">dequeue</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    x = Q[Q.head];</span><br><span class="line">    <span class="keyword">if</span>(Q.head == Q.length) Q.head = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> Q.head++;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-1-2"><a href="#10-1-2" class="headerlink" title="10.1-2"></a>10.1-2</h4><p><code>A[1]</code>作为第一个栈的栈底</p>
+<p><code>A[n]</code>作为第二个栈的栈底</p>
+<p>两个栈由两边向中间插入元素</p>
+<h4 id="10-1-6"><a href="#10-1-6" class="headerlink" title="10.1-6"></a>10.1-6</h4><p>将两个栈的栈底看成一起,一个栈的栈顶看成队列头,另一个栈的栈顶看成队列尾</p>
+<p>插入删除操作均为$O(1)$</p>
+<h4 id="10-1-7"><a href="#10-1-7" class="headerlink" title="10.1-7"></a>10.1-7</h4><p>如果使用双端队列的话就没什么好说的,一个双端队列能模拟两个栈 插入删除操作都是$O(1)$</p>
+<p>如果使用普通队列的话,设这两个栈分别叫做<code>q1,q2</code></p>
+<p>初始时均为空,插入操作,把元素从非空的队尾进入,如果两个栈都是空的就默认是<code>q1</code>时间复杂度是$O(1)$</p>
+<p>删除操作,非空的队列除了对后一个元素都出队并且入队到另一个队列,返回并删除原来队列的最后一个元素,这样的时间复杂度是$O(n)$</p>
+<h3 id="10-2-链表"><a href="#10-2-链表" class="headerlink" title="10.2 链表"></a>10.2 链表</h3><p><strong>双向链表</strong>:链表中每一个元素既有指向前方元素的指针又有指向后方元素的指针</p>
+<p><strong>单向链表</strong>:链表中每一个元素只有指向后方元素的指针</p>
+<p><strong>循环链表</strong>:链表的头元素的<code>prev</code>指向链表最后一个元素,链表的最后一个元素的<code>next</code>指向链表的头元素</p>
+<p><strong>是否排序</strong>:链表的关键字的线性顺序和链表的线性顺序一致</p>
+<p>此处链表的实现稍后讨论,在这里先给出伪代码</p>
+<p><strong>链表的搜索</strong></p>
+<p><code>list_search</code>:</p>
+<figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List-search(k)</span><br><span class="line">	x = L.head</span><br><span class="line">	while x != NIL and x.key != k</span><br><span class="line">		x = x.head</span><br><span class="line">	return x</span><br></pre></td></tr></table></figure>
+
+
+
+<p>$O(n)$</p>
+<p><strong>链表的插入</strong></p>
+<p>将元素<code>x</code>插入链表的前端</p>
+<p><code>list_insert</code>:</p>
+<figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list_insert(x)</span><br><span class="line">	x.next = L.head</span><br><span class="line">	if L.head != NIL</span><br><span class="line">		L.head.prev = x</span><br><span class="line">	L.head = x</span><br><span class="line">	x.prev = NIL</span><br></pre></td></tr></table></figure>
+
+<p>$O(1)$</p>
+<p><strong>链表的删除</strong></p>
+<p><code>list_delete</code></p>
+<figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list_delete(x)</span><br><span class="line">	if x.prev != NIL</span><br><span class="line">		x.prev.next = x.next</span><br><span class="line">	else L.head = x.next</span><br><span class="line">	if x.next != NIL</span><br><span class="line">		x.next.perv = x.prev</span><br></pre></td></tr></table></figure>
+
+<p>还有一种方法,将提到的<code>NIL</code>作为一个特殊的对象,可以简化一些边界条件的处理,在此不再赘述</p>
+<h3 id="10-3-指针和对象的实现"><a href="#10-3-指针和对象的实现" class="headerlink" title="10.3 指针和对象的实现"></a>10.3 指针和对象的实现</h3><p>本节介绍了一些没有指针和对象数据类型的编程语言对于链表的表示方式,可是高贵的<code>c++</code>正好拥有这样的方法</p>
+<p>在此给出<code>c++</code>中的指针的链表实现方法</p>
+<p>链表的定义:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> key;</span><br><span class="line">    node *prev,*next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>链表建立的实例:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">node *l = <span class="keyword">new</span> node,*its = l,*last = <span class="literal">NULL</span>;</span><br><span class="line">l -&gt; prev = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    its -&gt; next = <span class="keyword">new</span> node;</span><br><span class="line">    its -&gt; next -&gt; next = <span class="literal">NULL</span>,its -&gt; next -&gt; prev = its;</span><br><span class="line">    its -&gt; next -&gt; key = i;</span><br><span class="line">    <span class="keyword">if</span>(i == n) last = its;</span><br><span class="line">    its = its -&gt; next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个实例创建了一个长度为<code>n</code> 的链表,链表的头是<code>l</code>,链表的尾巴是<code>last</code></p>
+<p>链表的每一个元素的关键字按顺序赋值成<code>1..n</code></p>
+<p>链表的遍历(搜索)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">search</span><span class="params">(node *l,<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(node *i = l;i -&gt; next != <span class="literal">NULL</span>;i = i -&gt; next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i -&gt; key == x) <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然而在这里还不够,因为这里是通过动态内存分配的方式,我们在程序结束前要把分配的内存收回,否则会提示<code>memory leak</code>内存泄漏</p>
+<p>链表的全部删除</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">delete_all</span><span class="params">(node *l,node *last)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(node *i = last -&gt; prev;i != <span class="literal">NULL</span>;i = i -&gt; prev)</span><br><span class="line">	&#123;</span><br><span class="line">    	<span class="keyword">delete</span> i -&gt; next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">delete</span> l;    </span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-4-有根树的表示"><a href="#10-4-有根树的表示" class="headerlink" title="10.4 有根树的表示"></a>10.4 有根树的表示</h3><p>在这里主要说明任意孩子的树的表示</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    node *p,*left_child,*right_sibling;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>具体图示见书图<code>10-10</code></p>
+<h2 id="第十一章-散列表"><a href="#第十一章-散列表" class="headerlink" title="第十一章 散列表"></a>第十一章 散列表</h2><h3 id="11-1-直接寻址表"><a href="#11-1-直接寻址表" class="headerlink" title="11.1 直接寻址表"></a>11.1 直接寻址表</h3><p>当关键字的全域$U$比较小的时候,我们采用直接寻址表,其中每个位置成为<strong>槽</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="comment">/* some data */</span></span><br><span class="line">&#125;T[maxt];</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-2-散列表"><a href="#11-2-散列表" class="headerlink" title="11.2 散列表"></a>11.2 散列表</h3><p>将大的全域$U$对应到小的表$T$当中,需要利用<strong>散列函数</strong>$h$<br>$$<br>h:U\rightarrow T<br>$$<br>实际情况下$|U| \ll |T|$所以一定存在$h(k_1)&#x3D;h(k_2),k_1 \ne k_2$</p>
+<p><strong>通过连接法解决冲突</strong></p>
+<p>在链接法中,我们把冲突的槽中的所有元素都放入一个链表中</p>
+<p>这样的话表<code>T</code>就可以是一个指向<code>node</code>的指针数组</p>
+<p><strong>链接法散列的分析</strong></p>
+<p>给定一个具有$n$个元素,$m$个槽位的散列表$T$,定义$T$的装载因子$\alpha&#x3D;n&#x2F;m$</p>
+<p>经过分析,链接法散列表的全部字典操作所需的时间为$O(1)$</p>
+<h3 id="11-3-散列函数"><a href="#11-3-散列函数" class="headerlink" title="11.3 散列函数"></a>11.3 散列函数</h3><p><strong>好的散列函数的特点</strong></p>
+<p>满足简单均匀散列的假设条件</p>
+<p><strong>将关键字转化为自然数</strong></p>
+<h4 id="11-3-1-除法散列法"><a href="#11-3-1-除法散列法" class="headerlink" title="11.3.1 除法散列法"></a>11.3.1 除法散列法</h4><p>就是取模,通常更喜欢不是$2$的某次幂的质数<br>$$<br>h(k) &#x3D; k\mod{c}<br>$$</p>
+<h4 id="11-3-2-乘法散列法"><a href="#11-3-2-乘法散列法" class="headerlink" title="11.3.2 乘法散列法"></a>11.3.2 乘法散列法</h4><p>$$<br>h(k)&#x3D; \lfloor m(kA \mod{1}) \rfloor,A \in (0,1)<br>$$</p>
+<p>其中$kA \mod{1}$表示$kA$的小数部分等于$kA- \lfloor kA\rfloor$</p>
+<p>通常选择$m$是$2$的某次幂</p>
+<p>通常认为<br>$$<br>A \approx (\sqrt{5}-1)&#x2F;2 &#x3D; 0.618…<br>$$<br>是一个比较理想的值</p>
+<h4 id="11-3-3-全域散列法"><a href="#11-3-3-全域散列法" class="headerlink" title="11.3.3 全域散列法"></a>11.3.3 全域散列法</h4><p>全域散列法需要一组有限散列函数,将给定的关键字全域映射到表中.</p>
+<p>由于选择的散列函数是随机化的,所以全域散列的平均性态是比较好的</p>
+<p><strong>设计一个全域散列函数类</strong></p>
+<p>经过第三十一章的技巧,选择一个足够大的素数$p$,使得每个可能的关键字$k$都落在$[0,p-1]$中,设$\mathbb{Z}_p&#x3D;[0,p-1],\mathbb{Z}_p^*&#x3D;[1,p-1]$</p>
+<p>经过神奇的技巧,有<br>$$<br>h_{ab} (k)&#x3D;((ak+b)\mod{p})\mod{m}<br>$$<br>其中$m$是散列表的槽数,$p,m$在一组散列函数中不变</p>
+<h3 id="11-4-开放寻址法"><a href="#11-4-开放寻址法" class="headerlink" title="11.4 开放寻址法"></a>11.4 开放寻址法</h3><p>开放寻址法使得所有的元素都存放在散列表中,这使得装载因子$\alpha$绝对不会超过$1$.</p>
+<p>要使用开放寻址法插入元素,需要连续的检查散列表,称为<strong>探查</strong></p>
+<p>散列函数需要将探查号(第几次探查)作为第二个参数</p>
+<p>这样,散列函数就变为,<br>$$<br>h:U\times [0,m-1] \rightarrow [0,m-1]<br>$$<br>的一个二元函数.</p>
+<p><code>hash_insert</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">hash_insert</span><span class="params">(<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> j = <span class="built_in">hash</span>(k,i);</span><br><span class="line">        <span class="keyword">if</span>(T[j] == NIL)</span><br><span class="line">        &#123;</span><br><span class="line">			T[j] = k;</span><br><span class="line">            <span class="keyword">return</span> j;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cerr &lt;&lt; <span class="string">&quot;hash table overflow&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>hash_search</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">hash_search</span><span class="params">(<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt;= m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">   		j = <span class="built_in">hash</span>(k,i);</span><br><span class="line">        <span class="keyword">if</span>(T[j] == k) <span class="keyword">return</span> j;</span><br><span class="line">        <span class="keyword">if</span>(T[j] == NIL) <span class="keyword">return</span> NIL;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> NIL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里要保证<code>hash(k,i)</code>满足对确定的<code>k,i</code> <code>hash</code>的值是唯一的</p>
+<p>在删除操作中,因为我们检测的是<code>NIL</code>,不能直接的将被删除的元素赋值为<code>NIL</code>,书中提示我们可以赋值为<code>DELETED</code>但是这样要修改<code>hash_insert</code>,所以涉及到删除操作的时候,通常是使用链接法来解决冲突</p>
+<p>以下给出三种探查方式</p>
+<p><strong>线性探查</strong>:</p>
+<p>给定一个普通的散列函数,$h’:U \rightarrow [0,m-1]$ 称之为<strong>辅助散列函数</strong></p>
+<p>线性探查采用的散列函数为<br>$$<br>h(k,i) &#x3D; (h’(k) + i) \mod {m},i \in [0,m-1]<br>$$</p>
+<p>简单来说就是把原来的$h’(k)$往下移动$i$位<br>但是线性探查也会出现一种问问题,称为<strong>一次群集</strong>,也就是随着被占用的槽的数量的增加,平均每次查找的时间也会不断增加<br><strong>二次探查</strong>:<br>二次探查使用的散列函数为<br>$$<br>    h(k,i) &#x3D; (h’(k)+c_1i+c_2i^2)\mod{m}<br>$$<br>也就是说新的散列函数和原来的散列函数之间存在二次函数的偏移关系<br>但是这一性质也会导致一种轻度的群集<strong>二次群集</strong><br><strong>双重散列</strong>:<br>双重散列是开放寻址法的最好方法之一<br>双重散列使用的散列函数为<br>$$<br>    h(k,i) &#x3D; (h_1(k)+ih_2(k))\mod{m}<br>$$<br>其中的$h_1$和$h_2$均为辅助散列函数<br>也就是说,散列函数和辅助散列函数的偏移也由一个新的辅助散列函数决定<br>这保证了偏移的均匀性<br>为了能查找整个散列表,值$h_2(k)$必须与$m$的大小互素  可以使得$m$为$2$的某次幂,设计$h_2(k)$是一个始终返回奇数的函数</p>
+<p><strong>定理11.8</strong>:对于装载因子$\alpha$小于$1$的开放寻址散列表,是一次成功查找中的探查期望数至多为<br>$$<br>    \frac{1}{\alpha}\ln{\frac{1}{1-\alpha}}<br>$$<br>假设采用均匀散列并且表中每个关键字被查找的可能性是相同的</p>
+<h3 id="11-5-完全散列"><a href="#11-5-完全散列" class="headerlink" title="11.5 完全散列"></a>11.5 完全散列</h3><p>完全散列是一种能在$O(1)$的时间内查找的方法<br>两层散列,第一层使用全域散列,第二层中使用精心选择的散列函数,使得第二层中不发生冲突  </p>
+<h2 id="第十二章-二叉搜索树"><a href="#第十二章-二叉搜索树" class="headerlink" title="第十二章 二叉搜索树"></a>第十二章 二叉搜索树</h2><p>搜索树支持许多动态集合操作,使用一个搜索树,既可以作为一个字典也可以作为一个优先队列</p>
+<h3 id="12-1-什么是二叉搜索树"><a href="#12-1-什么是二叉搜索树" class="headerlink" title="12.1 什么是二叉搜索树"></a>12.1 什么是二叉搜索树</h3><p>在二叉搜索树中,我们使用链表的数据结构来表示一棵树</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">	node *p,*left,*right;</span><br><span class="line">	<span class="type">int</span> key;</span><br><span class="line">	<span class="built_in">node</span>()</span><br><span class="line">	&#123;</span><br><span class="line">		p = left = right = <span class="literal">NULL</span>;</span><br><span class="line">		key = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>二叉搜索树中的关键字总是以满足二叉树搜索树的性质的方式来存储:</p>
+<blockquote>
+<p>设$x$是二叉搜索树的一个节点,如果$y$是$x$左子树的一个结点,那么$y.key \le x.key$.如果$y$是$x$右子树的一个结点,那么$y.key \ge x.key$</p>
+</blockquote>
+<p>可以用一些方法(中序遍历)来输出二叉搜索树的每个结点的<code>key</code></p>
+<p><code>inorder_tree_walk</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">inorder_tree_walk</span><span class="params">(node *x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">inorder_tree</span>(x -&gt; left);</span><br><span class="line">		cout &lt;&lt; x -&gt; key &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="built_in">inorder_tree</span>(x -&gt; right);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-1-3"><a href="#12-1-3" class="headerlink" title="12.1-3"></a>12.1-3</h4><p>设计一个执行中序遍历的非递归算法,可以使用栈作为辅助结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">	node *p,*left,*right;</span><br><span class="line">	<span class="type">int</span> key;</span><br><span class="line">	<span class="built_in">node</span>()</span><br><span class="line">	&#123;</span><br><span class="line">		p = left = right = <span class="literal">NULL</span>;</span><br><span class="line">		key = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">node *stack[max_node_num]; <span class="comment">//stack[1..top]</span></span><br><span class="line"><span class="type">int</span> top = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">inorder_tree_walk</span><span class="params">(node *x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//先放着,一会在写</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="12-2-查询二叉搜索树"><a href="#12-2-查询二叉搜索树" class="headerlink" title="12.2 查询二叉搜索树"></a>12.2 查询二叉搜索树</h3><p>二叉搜索树支持<code>search</code> <code>minimum</code> <code>maximum</code> <code>successor</code> <code>predecessor</code> 的查询操作<br>这些操作的时间复杂度都是$O(h)$其中$h$代表树的深度,在最好情况下$h &#x3D;\lfloor \lg{n}\rfloor$,在最坏情况下$h &#x3D; n$<br><strong>搜索</strong><br>给定一个指向根结点的指针,和关键字<code>k</code>,如果这个结点存在,返回指向关键字<code>k</code>的指针,否则返回<code>NULL</code><br><code>tree_seach</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">tree_search</span><span class="params">(node *root,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == <span class="literal">NULL</span> || k == root -&gt; key) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">if</span>(k &lt; x.key) <span class="keyword">return</span> <span class="built_in">tree_search</span>(root -&gt; left,k);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">tree_seach</span>(root -&gt; right,k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以使用<code>while</code>展开这个递归过程,会拥有更高的效率</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">tree_search</span><span class="params">(node *root,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(root != <span class="literal">NULL</span> &amp;&amp; k != root -&gt; key)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(k &lt; x -&gt; key) x = x -&gt; left;</span><br><span class="line">		<span class="keyword">else</span> x = x -&gt; right;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>最大关键字元素和最小关键字元素</strong></p>
+<p><code>tree_minimum</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">tree_minimun</span><span class="params">(node *root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(root -&gt; left != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		root = root -&gt; left;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只需要返回指向最左端的元素的指针即可<br><code>tree_maximum</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">tree_maximum</span><span class="params">(node *root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(root -&gt; right != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		root = root -&gt; right;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只需返回指向最右端元素的指针即可<br><strong>后继和前驱</strong><br>什么是后继,$x$的后继是大于$x.key$的最小$key$值的元素</p>
+<p><code>tree_successor</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">tree_successor</span><span class="params">(node *root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root -&gt; right != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">maximum</span>(root -&gt; right);</span><br><span class="line">	&#125;</span><br><span class="line">	node *t = root -&gt; p;</span><br><span class="line">	<span class="keyword">while</span>(t != <span class="literal">NULL</span> &amp;&amp; root = t -&gt; right)</span><br><span class="line">	&#123;</span><br><span class="line">		root = t;</span><br><span class="line">		t = t -&gt; p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数的<code>while</code>循环在寻找向左蔓延的树枝向右拐弯的第一个位置<br>同样<code>tree_predecessor</code>的实现与其类似<br><code>tree_predecessor</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">tree_precedessor</span><span class="params">(node *root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root -&gt; left != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">maximum</span>(root -&gt; left);</span><br><span class="line">	&#125;</span><br><span class="line">	node *t = root -&gt; p;</span><br><span class="line">	<span class="keyword">while</span>(t != <span class="literal">NULL</span> &amp;&amp; root == t -&gt; left)</span><br><span class="line">	&#123;</span><br><span class="line">		root = t;</span><br><span class="line">		t = t -&gt; left;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这也是<code>12.2-3</code>的<code>c++</code>代码实现</p>
+<h3 id="12-3-插入和删除"><a href="#12-3-插入和删除" class="headerlink" title="12.3 插入和删除"></a>12.3 插入和删除</h3><p>插入一个新结点可能会影响二叉搜索树的性质,所以在插入后要进行维护.<br><strong>插入</strong><br>把一个新值$v$插入一颗二叉搜索树$T$中,该过程以结点$z$作为输入,满足<code>z.key = v,z.left = NULL,z.right = NULL</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node *z = <span class="keyword">new</span> node;</span><br><span class="line">z -&gt; key = v;</span><br><span class="line">z -&gt; left = z -&gt; right = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>tree_insert</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">tree_insert</span><span class="params">(node *root,node *z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	node *y = <span class="literal">NULL</span>,*x = root;</span><br><span class="line">	<span class="keyword">while</span>(x != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		y = x;</span><br><span class="line">		<span class="keyword">if</span>(z -&gt; key &lt; x -&gt; key) x = x -&gt; left;</span><br><span class="line">		<span class="keyword">else</span> x = x -&gt; right;</span><br><span class="line">	&#125;</span><br><span class="line">	z -&gt; p = y;</span><br><span class="line">	<span class="keyword">if</span>(y == <span class="literal">NULL</span>) root = z; <span class="comment">// Tree is empty</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(z -&gt; key &lt; y -&gt; key) y -&gt; left = z;</span><br><span class="line">	<span class="keyword">else</span> y -&gt; right = z;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的<code>if(y == NULL) root = z;</code>并不会起任何效果,所以在向二叉搜索树插入的时候,不要忘记给出一个结点</p>
+<p><code>while</code>循环在寻找适合<code>z</code>插入的位置,最后的条件判断,在判断适合<code>z</code>是插入在左枝还是右枝<br>时间复杂度相当于<code>tree_search</code>$O(h)$</p>
+<p><strong>删除</strong></p>
+<p>在一棵二叉搜索树中删除结点$z$的整个策略分成三种情况  </p>
+<ul>
+<li>$z$没有孩子结点,直接将其删除,并且将其父节点的孩子结点变成<code>NULL</code></li>
+<li>$z$只有一个孩子,那么将这个孩子提升到树中$z$的位置上,并且修改$z$的父节点,让$z$的孩子替换$z$的位置</li>
+<li>如果$z$有两个孩子,那么找$z$的后继$y$(一定在$z$的右子树中),并且让$y$占据树中$z$的位置,$z$原来右子树的部分成为$y$的新的右子树,$z$原来的左子树成为$y$新的左子树(这种情况稍麻烦,$y$一定没有左子树,但是$y$有可能有右子树)</li>
+</ul>
+<p>考虑从一棵二叉搜索树$T$中删除一个结点$z$,在这个过程中指向$z$的指针作为输入</p>
+<p>考虑刚才提到的第三种情况,$z$既有左孩子,又有有孩子的时候  </p>
+<ul>
+<li>后继$y$是$z$的右孩子,用$y$替换$z$,并且仅留下$y$的右孩子($y$没有左子树)</li>
+<li>否则如果$y$不是$z$的右孩子,用$y$的右孩子替换$y$,然后用$y$替换$z$</li>
+</ul>
+<p>为了移动子树,定义函数<code>transplant(node *u,node *v)</code>用根结点是<code>v</code>的子树替换根结点是<code>u</code>的子树,<code>u</code>的父节点就变成<code>v</code>的父节点<br><code>tranplant</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">tranplant</span><span class="params">(node *u,node *v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(u -&gt; p == <span class="literal">NULL</span>) root = v;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(u == u -&gt; p -&gt; left) u -&gt; p -&gt; left = v;</span><br><span class="line">	<span class="keyword">else</span> u -&gt; p -&gt; right = v;</span><br><span class="line">	<span class="keyword">if</span>(v != <span class="literal">NULL</span>)	v -&gt; p = u -&gt; p;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>tree_delete</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">tree_delete</span><span class="params">(node *z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(z -&gt; left == <span class="literal">NULL</span>) <span class="built_in">transplant</span>(z,z -&gt; right);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(z -&gt; right == <span class="literal">NULL</span>) <span class="built_in">transplant</span>(z,z -&gt; left);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		node *y = <span class="built_in">tree_minimun</span>(z -&gt; right);</span><br><span class="line">		<span class="keyword">if</span>(y -&gt; p != z)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">transplant</span>(y,y -&gt; right);</span><br><span class="line">			y -&gt; right = z -&gt; right;</span><br><span class="line">			y -&gt; right -&gt; p = y;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">transplant</span>(z,y);</span><br><span class="line">		y -&gt; left = z -&gt; left;</span><br><span class="line">		y -&gt; left -&gt; p = y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="12-4-随机构建二叉搜索树"><a href="#12-4-随机构建二叉搜索树" class="headerlink" title="12.4 随机构建二叉搜索树"></a>12.4 随机构建二叉搜索树</h3><p>如果我们按照顺序让$n$个关键字按照严格递增的顺序插入,那么这棵树的高度为$h&#x3D;n-1$的一条链.<br>所以更好的做法是随机构建二叉搜索树<br>经过证明<br>$$<br>    \rm{E}[h]&#x3D;O(n \lg{n})<br>$$</p>
+<h2 id="第十三章-红黑树"><a href="#第十三章-红黑树" class="headerlink" title="第十三章 红黑树"></a>第十三章 红黑树</h2><p>第十二章介绍了一棵高度为$h$的二叉搜索树,它支持<code>search</code> <code>predecessor</code> <code>successor</code> <code>minimum</code> <code>maximum</code> <code>insert</code> <code>delete</code>并且这些操作的时间复杂度为$O(h)$.如果搜索树的高度较低时,这些集合的操作将会执行的比较快.但是当树的高度较高的这些操作可能不比使用链表快.<br>红黑树是许多”平衡搜索树”的一种,可以保证在最坏情况下基本动态集合操作的时间复杂度为$O(\lg{n})$</p>
+<h3 id="13-1-红黑树的性质"><a href="#13-1-红黑树的性质" class="headerlink" title="13.1 红黑树的性质"></a>13.1 红黑树的性质</h3><p>红黑树是一颗二叉搜索树,它在每个结点上增加了一个表示结点颜色的存储位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">	node *p,*left,*right;</span><br><span class="line">	<span class="type">bool</span> color;</span><br><span class="line">	<span class="type">int</span> key;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>通过对每条跟到简单路径的上各个结点的颜色进行约束,红黑树确保没有一条路径会比其他路径长出$2$倍,因此红黑树是近于平衡的</p>
+<p>红黑树满足以下性质:</p>
+<ul>
+<li>每个结点是红色的或者是黑色的</li>
+<li>根结点是黑色的</li>
+<li>每个叶结点(<code>NIL</code>)是黑色的</li>
+<li>如果一个结点是红色的,则它的两个子结点都是黑色的</li>
+<li>对每个结点,从该结点到其所有后代结点的简单路径上,均包含相同数目的黑色结点</li>
+</ul>
+<p>为了便于处理红黑树的边界条件,我们使用哨兵来代表<code>NIL</code>,哨兵是一个和其他对象属性相同的对象,但是哨兵被特殊化,作为黑色(在代码中,使用<code>Tnil</code>来表示哨兵结点)</p>
+<p><strong>黑高</strong>:从某个结点出发,到达一个叶节点的任意一条简单路径上的黑色结点个数成为黑高,记为$bh(x)$</p>
+<p>一棵有$n$个内部结点的红黑树的高度至多为$2\lg{n+1}$</p>
+
       
     </div>
 
@@ -310,7 +512,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-05 21:44:44" itemprop="dateModified" datetime="2022-08-05T21:44:44+08:00">2022-08-05</time>
+                <time title="Modified: 2022-08-08 06:05:23" itemprop="dateModified" datetime="2022-08-08T06:05:23+08:00">2022-08-08</time>
               </span>
 
           
