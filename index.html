@@ -152,6 +152,67 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/08/11/Die-in-insufficiency-and-forgetting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AAA">
+      <meta itemprop="description" content="分享，知识，生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AAA's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/11/Die-in-insufficiency-and-forgetting/" class="post-title-link" itemprop="url">Die-in-insufficiency-and-forgetting</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-11 20:34:43 / Modified: 20:38:05" itemprop="dateCreated datePublished" datetime="2022-08-11T20:34:43+08:00">2022-08-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <iframe src="//player.bilibili.com/player.html?aid=644315858&bvid=BV15Y4y1A72T&cid=799507040&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15Y4y1A72T?share_source=copy_web&vd_source=0bd88a7dc8d9ee3707a87e1b2f0d6e80">Die-in-insufficiency-and-forgetting</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/08/06/xdm-th92483/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -245,7 +306,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-09 03:39:47" itemprop="dateModified" datetime="2022-08-09T03:39:47+08:00">2022-08-09</time>
+                <time title="Modified: 2022-08-09 23:19:19" itemprop="dateModified" datetime="2022-08-09T23:19:19+08:00">2022-08-09</time>
               </span>
 
           
@@ -459,9 +520,30 @@
 <li>如果一个结点是红色的,则它的两个子结点都是黑色的</li>
 <li>对每个结点,从该结点到其所有后代结点的简单路径上,均包含相同数目的黑色结点</li>
 </ul>
-<p>为了便于处理红黑树的边界条件,我们使用哨兵来代表<code>NIL</code>,哨兵是一个和其他对象属性相同的对象,但是哨兵被特殊化,作为黑色(在代码中,使用<code>Tnil</code>来表示哨兵结点)</p>
-<p><strong>黑高</strong>:从某个结点出发,到达一个叶节点的任意一条简单路径上的黑色结点个数成为黑高,记为$bh(x)$</p>
+<p>为了便于处理红黑树的边界条件,我们使用哨兵来代表<code>NIL</code>,哨兵是一个和其他对象属性相同的对象,但是哨兵被特殊化,作为黑色(在代码中,使用<code>TNIL</code>来表示哨兵结点)</p>
+<p><strong>黑高</strong>:从某个结点出发(<strong>不包含</strong>该结点),到达一个叶节点的任意一条简单路径上的黑色结点个数成为黑高,记为$bh(x)$</p>
 <p>一棵有$n$个内部结点的红黑树的高度至多为$2\lg{n+1}$</p>
+<h3 id="13-2-旋转"><a href="#13-2-旋转" class="headerlink" title="13.2 旋转"></a>13.2 旋转</h3><p>旋转树操作<code>tree_insert</code>和<code>tree_delete</code>由于对树进行修改.可能违反<code>13.1</code>给出的红黑性质.为了维护这些性质,我们使用旋转操作.</p>
+<p>观察图<code>13-2</code>,左旋和右旋的几何意义不强,但可以从二叉搜索树的性质来判断.</p>
+<p>下面简单描述右旋:右旋使得处在右侧位置的子结点旋转到他的父节点的位置.根据原来的二叉搜索关系可知$\alpha  &lt; x &lt; \beta &lt; y&lt;\gamma$(这就是这棵子树的中序遍历)</p>
+<p>保证这个不等关系成立,接下来把$x$作为这个子树的根结点,所以右旋后的树中,$x$是根结点,左结点是$\alpha$,右结点是$y$,$y$的左节点是$\beta$,右结点是$\gamma$</p>
+<p><code>left_rotate</code>:<br>左旋,把它的右结点变成根结点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">left_rotate</span><span class="params">(node *x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	node *y = x -&gt; right;</span><br><span class="line">	x -&gt; right = y -&gt; left; <span class="comment">// turn y&#x27;s left subtree into x&#x27;s right subtree</span></span><br><span class="line">	<span class="keyword">if</span>(y -&gt; left != TNIL) y -&gt; left -&gt; p = x; </span><br><span class="line">	y -&gt; p = x -&gt; p;</span><br><span class="line">	<span class="keyword">if</span>(x -&gt; p != TNIL) Troot = y;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (x == x -&gt; p -&gt; left) x -&gt; p -&gt; left = y;</span><br><span class="line">	<span class="keyword">else</span> x -&gt; p -&gt; right = y;</span><br><span class="line">	y -&gt; left = x;</span><br><span class="line">	x -&gt; p = y;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在左旋和右旋过程中,我们注意到<code>x -&gt; left</code>和<code>y -&gt; right</code>始终不变(最左边和最右边的关系都不变)<br>所以代码中,不对他们进行处理,需要处理的是<code>x -&gt; right</code>和<code>y -&gt; left</code><br>在左旋中,根据关系<code>x -&gt; right = y -&gt; left</code><br>在代码中<code>if(y -&gt; left != TNIL)</code>的目的是不随便对哨兵进行<code>p</code>的赋值,以免引起<code>bug</code>,之后的<code>y -&gt; left -&gt; p = x</code>是在处理<code>x -&gt; right = y -&gt;left</code>的双向关系</p>
+<p>接下来,要把<code>x</code>的所属给到<code>y</code>上,三行的条件判断,判断了<code>x</code>所属的三种情况</p>
+<ol>
+<li><code>x</code>是根结点,将标识根结点的<code>Troot = y</code></li>
+<li><code>x</code>是父结点的左节点,那么<code>x</code>的父结点的左节点变成<code>y</code></li>
+<li><code>x</code>是父结点的右节点,那么<code>x</code>的父结点的右节点变成<code>y</code></li>
+</ol>
+<p>最后,<code>y -&gt; left = x,x -&gt; p = y;</code>这一步只能后做,因为如果在处理<code>x</code>的所属之前将<code>x -&gt; p</code>覆盖的话,<code>x</code>的所属信息就会丢失</p>
+<p><code>right_rotate</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">right_rotate</span><span class="params">(node *y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	node *x = y -&gt; left;</span><br><span class="line">	y -&gt; right = x -&gt; left;</span><br><span class="line">	<span class="keyword">if</span>(x -&gt; right != TNIL) x -&gt; right -&gt; p = y;</span><br><span class="line">	x -&gt; p = y -&gt; p;</span><br><span class="line">	<span class="keyword">if</span>(y -&gt; p == TNIL) Troot = x;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(y -&gt; p -&gt; left == y) x = y -&gt; p -&gt; left;</span><br><span class="line">	<span class="keyword">else</span> x = y -&gt; p -&gt; right;</span><br><span class="line">	x -&gt; right = y;</span><br><span class="line">	y -&gt; p = x;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样,我们可以写出右旋操作<br>旋转操作的时间复杂度是$O(1)$</p>
+<h3 id="13-3-插入"><a href="#13-3-插入" class="headerlink" title="13.3 插入"></a>13.3 插入</h3><p>我们可以在$O(\lg{n})$的时间内完成插入,使用修改过的<code>12.3</code>的<code>tree_insert</code>过程,然后调用<code>rb_insert_fixup</code>来确保红黑性质<br><code>rb_insert</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">rb_insert</span><span class="params">(node *z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	node *y = TNIL,*x = Troot;</span><br><span class="line">	<span class="keyword">while</span>(x != TNIL)</span><br><span class="line">	&#123;</span><br><span class="line">		y = x;</span><br><span class="line">		<span class="keyword">if</span>(z -&gt; key &lt; x -&gt; key) x = x -&gt; left;</span><br><span class="line">		<span class="keyword">else</span> x = x -&gt; right;</span><br><span class="line">	&#125;</span><br><span class="line">	z -&gt; p = y;</span><br><span class="line">	<span class="keyword">if</span>(y == TNIL) Troot = z;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(z -&gt; key &lt; y -&gt; key) y -&gt; left = z;</span><br><span class="line">	<span class="keyword">else</span> y -&gt; right = z;</span><br><span class="line">	z -&gt; left = z -&gt; right = TNIL;</span><br><span class="line">	z -&gt; redcolor = <span class="literal">true</span>;</span><br><span class="line">	<span class="built_in">rb_insert_fixup</span>(z);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>rb_insert_fixup</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">rb_insert_fixup</span><span class="params">(node *z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(z -&gt; isred)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(z -&gt; p == z -&gt; p -&gt; p -&gt; left)</span><br><span class="line">		&#123;</span><br><span class="line">			node *y = z -&gt; p -&gt; p -&gt; right;</span><br><span class="line">			<span class="keyword">if</span>(y -&gt; isred)</span><br><span class="line">			&#123;</span><br><span class="line">				z -&gt; p -&gt; isred = <span class="literal">false</span>;</span><br><span class="line">				y -&gt; isred = <span class="literal">false</span>;</span><br><span class="line">				z -&gt; p -&gt; p -&gt; isred = <span class="literal">true</span>;</span><br><span class="line">				z = z -&gt; p -&gt; p;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(z == z -&gt; p -&gt; right)</span><br><span class="line">			&#123;</span><br><span class="line">				z = z -&gt; p;</span><br><span class="line">				<span class="built_in">left_rotate</span>(z);</span><br><span class="line">			&#125;</span><br><span class="line">			z -&gt; p -&gt; isred = <span class="literal">false</span>;</span><br><span class="line">			z -&gt; p -&gt; p -&gt; isred = <span class="literal">true</span>;</span><br><span class="line">			<span class="built_in">right_rotate</span>(z -&gt; p -&gt; p);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1280,7 +1362,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
