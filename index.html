@@ -152,6 +152,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/09/02/iostream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AAA">
+      <meta itemprop="description" content="分享，知识，生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AAA's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/02/iostream/" class="post-title-link" itemprop="url">iostream</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-09-02 23:23:17" itemprop="dateCreated datePublished" datetime="2022-09-02T23:23:17+08:00">2022-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-03 02:48:34" itemprop="dateModified" datetime="2022-09-03T02:48:34+08:00">2022-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="iostream"><a href="#iostream" class="headerlink" title="iostream"></a>iostream</h1><p>很多人为了所谓的速度,而去使用<code>printf</code>和<code>scanf</code><br>殊不知<code>cin</code> <code>cout</code>也兼具速度和功能  </p>
+<h2 id="速度"><a href="#速度" class="headerlink" title="速度"></a>速度</h2><p>建议把以下几行焊死在你的代码上</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么代价是什么? 代价就是你关闭了<code>iostream</code>和<code>cstdio</code>的同步,你只能使用<code>iostream</code></p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>你可能说<code>printf(&quot;%.2f&quot;, float_num);</code>很便捷,实际上头文件<code>iomanip</code>里也有类似功能</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">float</span> a = <span class="number">3.14159</span>;</span><br><span class="line">	cout.<span class="built_in">setf</span>(ios::fixed);</span><br><span class="line">	cout &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">2</span>) &lt;&lt; a &lt;&lt; endl; <span class="comment">// get 3.14</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>还有很多</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="number">12</span> &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; hex &lt;&lt; <span class="number">12</span> &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; oct &lt;&lt; <span class="number">12</span> &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; <span class="number">12</span>;</span><br><span class="line">	<span class="comment">// get output: 12 c 14 14</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		hex 16</span></span><br><span class="line"><span class="comment">		dec 10</span></span><br><span class="line"><span class="comment">		oct 8  //永久作用</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>…<br>更多用法请看<a target="_blank" rel="noopener" href="https://blog.csdn.net/wolinxuebin/article/details/7490113">垃圾桶里的这篇文章</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/08/11/Die-in-insufficiency-and-forgetting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1362,12 +1437,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
