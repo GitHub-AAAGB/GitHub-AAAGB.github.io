@@ -152,6 +152,69 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/09/08/vimrc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AAA">
+      <meta itemprop="description" content="分享，知识，生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AAA's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/08/vimrc/" class="post-title-link" itemprop="url">vimrc</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-08 18:46:40 / Modified: 18:49:23" itemprop="dateCreated datePublished" datetime="2022-09-08T18:46:40+08:00">2022-09-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这是我的vim配置文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> plug#begin(<span class="string">&#x27;~/.vim/plugged&#x27;</span>)</span><br><span class="line">Plug <span class="string">&#x27;iamcco/markdown-preview.nvim&#x27;</span>, &#123; <span class="string">&#x27;do&#x27;</span>: <span class="string">&#x27;cd app &amp; yarn install&#x27;</span>  &#125;</span><br><span class="line"><span class="keyword">call</span> plug#end()</span><br><span class="line"></span><br><span class="line"><span class="keyword">autocmd</span> Filetype markdown <span class="keyword">noremap</span> ,<span class="keyword">m</span> :MarkdownPreview<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">autocmd</span> Filetype markdown <span class="keyword">noremap</span> ,ms :MarkdownPreviewStop<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">number</span> </span><br><span class="line"><span class="keyword">set</span> <span class="keyword">ts</span>=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">sw</span>=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> autoindent</span><br><span class="line"><span class="keyword">set</span> hlsearch </span><br><span class="line"><span class="keyword">set</span> scrolloff=<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">inoremap</span> <span class="string">&quot; &quot;</span><span class="comment">&quot;&lt;left&gt;</span></span><br><span class="line"><span class="keyword">inoremap</span> ( ()<span class="symbol">&lt;left&gt;</span></span><br><span class="line"><span class="keyword">inoremap</span> &#123; &#123;&#125;<span class="symbol">&lt;left&gt;</span></span><br><span class="line"><span class="keyword">inoremap</span> [ []<span class="symbol">&lt;left&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">map</span> <span class="symbol">&lt;f9&gt;</span> :!g++ -O2 -Wall -fsanitize=address % -<span class="keyword">o</span> %&lt;<span class="symbol">&lt;cr&gt;</span></span><br><span class="line"><span class="keyword">map</span> <span class="symbol">&lt;f8&gt;</span> :!time ./%&lt;<span class="symbol">&lt;cr&gt;</span></span><br><span class="line"><span class="keyword">imap</span> &#123;<span class="symbol">&lt;CR&gt;</span> &#123;<span class="symbol">&lt;CR&gt;</span>&#125;<span class="symbol">&lt;Esc&gt;</span>O<span class="symbol">&lt;Tab&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&quot;color evening</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">colorscheme</span> slate</span><br><span class="line"><span class="keyword">hi</span> Normal  ctermfg=<span class="number">252</span> ctermbg=none</span><br></pre></td></tr></table></figure>
+
+<p>如果在考试的时候,可以使用精简一下</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">nu</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">ts</span>=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">sw</span>=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> autoindent</span><br><span class="line"><span class="keyword">set</span> hlsearch </span><br><span class="line"></span><br><span class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">imap</span> <span class="string">&quot; &quot;</span><span class="comment">&quot;&lt;left&gt;</span></span><br><span class="line"><span class="keyword">imap</span> ( ()<span class="symbol">&lt;left&gt;</span></span><br><span class="line">iemap &#123; &#123;&#125;<span class="symbol">&lt;left&gt;</span></span><br><span class="line"><span class="keyword">imap</span> [ []<span class="symbol">&lt;left&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">map</span> <span class="symbol">&lt;f9&gt;</span> :!g++ -O2 -Wall -fsanitize=address % -<span class="keyword">o</span> %&lt;<span class="symbol">&lt;cr&gt;</span></span><br><span class="line"><span class="keyword">map</span> <span class="symbol">&lt;f8&gt;</span> :!time ./%&lt;<span class="symbol">&lt;cr&gt;</span></span><br><span class="line"><span class="keyword">imap</span> &#123;<span class="symbol">&lt;CR&gt;</span> &#123;<span class="symbol">&lt;CR&gt;</span>&#125;<span class="symbol">&lt;Esc&gt;</span>O<span class="symbol">&lt;Tab&gt;</span></span><br><span class="line"><span class="keyword">colorscheme</span> slate</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/09/03/warning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1295,87 +1358,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/07/27/whichOne/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="AAA">
-      <meta itemprop="description" content="分享，知识，生活">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AAA's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/27/whichOne/" class="post-title-link" itemprop="url">whichOne</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-07-27 23:40:29" itemprop="dateCreated datePublished" datetime="2022-07-27T23:40:29+08:00">2022-07-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-28 00:04:20" itemprop="dateModified" datetime="2022-07-28T00:04:20+08:00">2022-07-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-n-1-还是-1-n"><a href="#0-n-1-还是-1-n" class="headerlink" title="[0,n-1]还是[1,n]?"></a>[0,n-1]还是[1,n]?</h1><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>（都是废话）</p>
-<p>作为不知名蒟蒻，奇怪<code>bug</code>体质以及超弱编码能力拥有者。几乎一年没有碰过代码的我为了找回手感开始怒刷水题。（结果连水题也是<code>bug</code>一堆）</p>
-<p>在我看到<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1563">这道题</a> 的时候，我顿感水中至水，却出了3次<code>bug</code></p>
-<p>第一次：至关重要的<code>mod</code>条件写错了</p>
-<p>第二次：数组大小看错了</p>
-<p>第三次：始终有两个点<code>WA</code></p>
-<p>前两次还好，第一次连题目样例都过不了；第二次看到<code>RE</code>我就知道大事不好；但是第三次的<code>WA</code>就透露着一点不妙。</p>
-<p>为什么就偏偏两个点不过。</p>
-<h3 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h3><p>类似<code>约瑟夫环</code>，只不过每个人都有自己的朝向，并且给出不同的命令（向左或者向右第$s_i$个）</p>
-<p>简单的取模就可以实现。</p>
-<p>但是题目中解释样例和图片中使用的都是$[1,n]$，自然的，我在编程的时候也使用$[1,n]$</p>
-<h2 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h2><p>在排除其他因素干扰后，一直有两个点过不去。这使我想到可能是核心代码出了问题（这破水题有啥“核心”)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tmpside == p[now].side)</span><br><span class="line">&#123;</span><br><span class="line">    now = (now - tmpnum + n) % n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (tmpside != p[now].side)</span><br><span class="line">&#123;</span><br><span class="line">    now = (now + n) % n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>仔细观察这里，对于 $\forall x\in \mathbb{z^+}$， $x\mod{n}$ 的范围是 $[0,n-1]$ ，而我是使用 $[1,n]$ 来存储。自然会出现问题</p>
-<p>只需要改成 $[0,n-1]$ 即可。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当遇到取模类问题时 $[0,n-1]$ 要好于 $[1,n]$ ，因为更契合 $\mod{n}$ 的值域。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1445,7 +1427,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
