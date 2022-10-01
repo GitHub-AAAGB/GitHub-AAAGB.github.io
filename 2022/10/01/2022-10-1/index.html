@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"github-aaagb.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分享，知识，生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AAA&#39;s Blog">
-<meta property="og:url" content="https://github-aaagb.github.io/tags/grammar/index.html">
+  <meta name="description" content="和垃圾电脑搏斗,打铁和dalao">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022-10-1">
+<meta property="og:url" content="https://github-aaagb.github.io/2022/10/01/2022-10-1/index.html">
 <meta property="og:site_name" content="AAA&#39;s Blog">
-<meta property="og:description" content="分享，知识，生活">
+<meta property="og:description" content="和垃圾电脑搏斗,打铁和dalao">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-10-01T15:20:27.000Z">
+<meta property="article:modified_time" content="2022-10-01T15:31:15.426Z">
 <meta property="article:author" content="AAA">
+<meta property="article:tag" content="learning">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://github-aaagb.github.io/tags/grammar/">
+<link rel="canonical" href="https://github-aaagb.github.io/2022/10/01/2022-10-1/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>Tag: grammar | AAA's Blog</title>
+  <title>2022-10-1 | AAA's Blog</title>
   
 
 
@@ -146,51 +149,84 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">grammar
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://github-aaagb.github.io/2022/10/01/2022-10-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AAA">
+      <meta itemprop="description" content="分享，知识，生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AAA's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2022-10-1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-10-01 23:20:27 / Modified: 23:31:15" itemprop="dateCreated datePublished" datetime="2022-10-01T23:20:27+08:00">2022-10-01</time>
+            </span>
+
+          
+            <div class="post-description">和垃圾电脑搏斗,打铁和dalao</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>一道题: 在一个有重复元素的序列中,给出$x$,如果$a_i \quad \rm{xor} \quad a_j &#x3D; x$   则$(i, j)$是一个数对<br>问一共有多少个这样的数对.<br>一开始我使用的<code>set</code>结果没有考虑重复的问题<code>WA</code>了,<br>后来我改用<code>multiset</code>但是超时了<br>好在旁边的大佬给了我黑科技  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;ext/pb_ds/hash_policy.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdtr1c++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std::tr1;</span><br><span class="line"></span><br><span class="line">__gnu_pbds::gp_hash_table&lt;<span class="type">int</span>,<span class="type">int</span>&gt;m;</span><br></pre></td></tr></table></figure>
+<p>类似直接散列表,用法和<code>map</code>相同<br>很快啊, 原来超时的代码现在只需要0.1s  </p>
+<hr>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-02T23:23:17+08:00"
-              content="2022-09-02">
-          09-02
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/learning/" rel="tag"># learning</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/02/iostream/" itemprop="url">
-            <span itemprop="name">iostream</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/29/2022-9-28/" rel="prev" title="2022-9-28">
+      <i class="fa fa-chevron-left"></i> 2022-9-28
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
